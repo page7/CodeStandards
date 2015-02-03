@@ -29,7 +29,7 @@ PHP部分
 * 缩进：所有代码缩进约定为**4个空格**，不可使用TAB键替换。
 
 * 大括号：左括号和右括号要求在编辑器内处于同一列，且在关键词下一行。该条件应用于所有if / else if / else / for / foreach / switch / do / while / try 等语句。
-	<pre><code>if($i > 1)
+	<pre><code>if ($i > 1)
 	{
 	    // ..statement..
 	}
@@ -45,8 +45,16 @@ PHP部分
 	3. 右括号“)”后非括号，点符号其他字符之间应有一个空格。
 	4. 任何情况下，都应**禁止出现仅有空格或TAB的空行**，同时，**任何程序行尾不能出现多余的TAB或空格**。 
 	5. 关键词应全部使用小写。
-	6. 函数命名应根据开发框架环境使用对应的命名方式。
+	6. 函数命名应根据开发框架环境使用对应的命名方式，**函数名后无空格**。
 	7. 代码区域应规划合理，**任何超过15行的段落都应对应的断行并添加注释内容**。
+
+	<pre><code>$a = (($c / 10 * 12) + ($a * 11) + $b);
+	$b = 0;
+    for ($i = 0; $i &lt;= $a; $i ++)
+    {
+        $b += $i;
+    }
+    </code></pre>
 
 * 引号：所有单纯的文本引用，必需使用单引号。对于文本中存在小于三个的变量拼接，可使用单引号与点符号，也可以使用双引号。大量字符拼接务必使用双引号，并使用花括号如下格式：
 	**严禁**在双引号中不使用花括号直接引用数组或对象的内容。
@@ -61,6 +69,15 @@ PHP部分
 	如使用临时变量，请在“$”后增加“_”（较大的临时数据请务必在使用结束后使用 unset 注销）如：
 	<pre><code>$_time, $_temp, $_user</code></pre>
 	
+* 所有自定义变量必需经过初始化后才可以使用。
+	<pre><code>$b = array();             // 不可省略此句
+	foreach ($array as $v)
+	{
+		$b[] = $v;
+	}
+    </code></pre>
+
+
 * 在变量不可控的情况下，一定要使用 isset() 或 empty() 判断变量是否存在后再运算。特别是如 GET、COOKIE、数据库读取结果等变量时。
 	**禁止出现因此而引起的遍历或赋值报错，此错误大多会影响最终的结果。**
 
@@ -77,8 +94,31 @@ PHP部分
 	</code></pre>
 
 
-Documents
--------------
+###数据库查询###
+
+简单的查询语句请在一行内完成。如涉及表关联、子表、多条件查询等，一律按照SQL标准格式化语句。
+需要达到的要求是可逐层分析语句结构，如：
+<pre><code>
+SELECT  o.`order`, o.`time`, o,`status`, o,`uid`, 
+		u.`name`, p.`product` 
+FROM `order` AS o
+	LEFT JOIN `user` AS u ON o.`uid` = u.`id` 
+	LEFT JOIN `product` AS p ON o.`product` = p.`id`
+WHERE o.`uid` = 12 AND p.`name` LIKE "%衬衣%"
+ORDER BY o.`id` DESC
+LIMIT 0,10;
+
+</code></pre>
+
+要点：
+
++ 关键词大写
++ 库名、表名、字段名需要右 “`” 符号包裹（大键盘数字1前的符号）
++ 独立子句要求缩进
+
+
+HTML / CSS部分
+----------
 
 StackEdit stores your documents in your browser, which means all your documents are automatically saved locally and are accessible **offline!**
 
