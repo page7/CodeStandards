@@ -9,12 +9,12 @@ PHP
 
 除此之外，对以下特殊类型的文件，要求特殊的文件后缀。  
 类：.class.php  
-配置：.conf.php<br>
-方法(集)：.func.php<br>
-流程性文件： .inc.php<br>
-钩子文件： .hook.php<br>
-模板文件： .tpl.php<br>
-语言文件： .lang.php<br>
+配置：.conf.php  
+方法(集)：.func.php  
+流程性文件： .inc.php  
+钩子文件： .hook.php  
+模板文件： .tpl.php  
+语言文件： .lang.php  
 
 **使用框架开发，请使用此框架要求的文件命名规范定义。**
 
