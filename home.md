@@ -8,7 +8,9 @@
 
 PHP部分
 ----------
+
 ###文件/文件夹###
+
 文件根据项目差异允许使用__小驼峰__或__以下划线间隔的小写名称__，推荐使用后者，以较完整的词汇描述文件内容。新的词汇使用，请在部门内公开探讨。
 所有php后缀应均为.php，且使用utf-8 (non-BOM)格式。
 
@@ -25,7 +27,9 @@ PHP部分
 文件夹命名与文件要求统一。
 
 
+
 ###代码结构###
+
 * 缩进：所有代码缩进约定为**4个空格**，不可使用TAB键替换。
 
 * 大括号：左括号和右括号要求在编辑器内处于同一列，且在关键词下一行。该条件应用于所有if / else if / else / for / foreach / switch / do / while / try 等语句。
@@ -62,7 +66,7 @@ PHP部分
 	</code></pre>
 
 
-###变量###
+###变量/常量###
 * 变量命名：
 	由**约定俗成的缩写**和**完整词义单词**以及**下划线“_”**组成，如：
 	<pre><code>$pre_column_name, $username, $translation_lang</code></pre>
@@ -93,6 +97,10 @@ PHP部分
 	);
 	</code></pre>
 
+* 常量要求由全大写单词及下划线组成，用于某个范围的常量应协商确定。
+	<pre><code>PRODUCT_TYPE_HOTEL  DISTRICT_TYPE</code></pre>
+
+
 
 ###数据库查询###
 
@@ -103,18 +111,35 @@ PHP部分
 FROM `order` AS o
 	LEFT JOIN `user` AS u ON o.`uid` = u.`id` 
 	LEFT JOIN `product` AS p ON o.`product` = p.`id`
-WHERE o.`uid` = 12 AND p.`name` LIKE "%衬衣%"
+WHERE o.`uid` = :uid AND p.`name` LIKE :keyword
 ORDER BY o.`id` DESC
 LIMIT 0,10;
 </code></pre>
 
-要点：
+**要点：**
 
-+ 关键词大写
-+ 库名、表名、字段名需要右 “`” 符号包裹（大键盘数字1前的符号）
-+ 独立子句要求缩进
++ 关键词大写。
++ 库名、表名、字段名需要右 “`” 符号包裹（大键盘数字1前的符号）。
++ 独立子句要求缩进。
++ 尽量使用PDO的赋值解决方案，除非确认的被格式化的变量如(int)$_GET['id']，不要拼接SQL语句。
 
 
+
+###路径引用###
+
+所有对文件的路径的引用，都应该包含末尾的 "/"，且变量或常量命名应包含词汇path。
+含 dir 的变量，仅表示文件夹名称。如下：
+<pre><code>define('ROOT_PATH', dirname(\__FILE__).'/');
+$log_dir  = 'log';
+$log_path = ROOT_PATH . $log_dir . '/';
+</code></pre>
+
+
+
+###代码重用###
+
+不吝啬类与函数的定义，凡是需求基本相同的代码，应整理并总结出函数，定义于对应相应的文件中；多个相关函数应整理并创建类。
+代码重用，并**不应用**于钩子、可能要经常变更、复杂业务逻辑的代码。函数和类应该是**特定功能**或**结果要求单一**的。
 
 
 HTML / CSS部分
