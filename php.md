@@ -9,7 +9,9 @@ PHP
 
 
 除此之外，对以下特殊类型的文件，要求特殊的文件后缀。
+
 类：.class.php
+
 配置：.conf.php
 
 方法(集)：.func.php
