@@ -1,9 +1,9 @@
 开发代码规范
 ===================
 
-规范版本：1.0
-适用范围：适用于所有开发项目使用
-编写作者：[nolanchou@gmail.com](mailto:nolanchou@gmail.com)
+规范版本：1.0 
+适用范围：适用于所有开发项目使用 
+编写作者：[nolanchou@gmail.com](mailto:nolanchou@gmail.com) 
 
 
 PHP部分
@@ -28,7 +28,7 @@ PHP部分
 ###代码结构###
 * 缩进：所有代码缩进约定为**4个空格**，不可使用TAB键替换。
 
-* 大括号：左括号和右括号要求在编辑器内处于同一列，且在关键词下一行。该条件应用于所有if / else if / else / for / foreach / switch / do / while / try 等语句，并同时应用于函数定义。
+* 大括号：左括号和右括号要求在编辑器内处于同一列，且在关键词下一行。该条件应用于所有if / else if / else / for / foreach / switch / do / while / try 等语句。
 	<pre><code>if($i > 1)
 	{
 	    // ..statement..
@@ -49,17 +49,32 @@ PHP部分
 	7. 代码区域应规划合理，**任何超过15行的段落都应对应的断行并添加注释内容**。
 
 * 引号：所有单纯的文本引用，必需使用单引号。对于文本中存在小于三个的变量拼接，可使用单引号与点符号，也可以使用双引号。大量字符拼接务必使用双引号，并使用花括号如下格式：
-	**禁止**在双引号中不使用花括号直接引用数组或对象的内容。
+	**严禁**在双引号中不使用花括号直接引用数组或对象的内容。
 	<pre><code>$str = "{$world}，这是{$project['name']}的文档。请阅读并在第{$line -> number}行填写…";
 	</code></pre>
 
 
 ###变量###
-变量命名由**约定俗成的缩写**和**完整词义单词**以及**下划线“_”**组成，如：
+* 变量命名：
+	由**约定俗成的缩写**和**完整词义单词**以及**下划线“_”**组成，如：
 	<pre><code>$pre_column_name, $username, $translation_lang</code></pre>
-如使用临时变量，请在“$”后增加“_”，如：
+	如使用临时变量，请在“$”后增加“_”（较大的临时数据请务必在使用结束后使用 unset 注销）如：
 	<pre><code>$_time, $_temp, $_user</code></pre>
-较大的临时数据请务必在使用结束后使用 unset 注销。
+	
+* 在变量不可控的情况下，一定要使用 isset() 或 empty() 判断变量是否存在后再运算。特别是如 GET、COOKIE、数据库读取结果等变量时。
+	**禁止出现因此而引起的遍历或赋值报错，此错误大多会影响最终的结果。**
+
+* 数组和多个变量赋值，要求等号的对齐：
+	<pre><code>$username = 'ABC';
+	$password = md5('123456');
+	$lang     = 'zh-CN';
+	
+	$array    = array(
+		'username'    => $username,
+		'password'    => $password,
+		'lang'        => $lang,
+	);
+	</code></pre>
 
 
 Documents
