@@ -58,7 +58,7 @@ PHP部分
 
 * 引号：所有单纯的文本引用，必需使用单引号。对于文本中存在小于三个的变量拼接，可使用单引号与点符号，也可以使用双引号。大量字符拼接务必使用双引号，并使用花括号如下格式：
 	**严禁**在双引号中不使用花括号直接引用数组或对象的内容。
-	<pre><code>$str = "{$world}，这是{$project['name']}的文档。请阅读并在第{$line -> number}行填写…";
+	<pre><code>$str = "{$username}，这是{$project['name']}的文档。请阅读并在第{$line -> number}行填写…";
 	</code></pre>
 
 
@@ -98,8 +98,7 @@ PHP部分
 
 简单的查询语句请在一行内完成。如涉及表关联、子表、多条件查询等，一律按照SQL标准格式化语句。
 需要达到的要求是可逐层分析语句结构，如：
-<pre><code>
-SELECT  o.`order`, o.`time`, o,`status`, o,`uid`, 
+<pre><code>SELECT  o.`order`, o.`time`, o,`status`, o,`uid`, 
 		u.`name`, p.`product` 
 FROM `order` AS o
 	LEFT JOIN `user` AS u ON o.`uid` = u.`id` 
@@ -107,7 +106,6 @@ FROM `order` AS o
 WHERE o.`uid` = 12 AND p.`name` LIKE "%衬衣%"
 ORDER BY o.`id` DESC
 LIMIT 0,10;
-
 </code></pre>
 
 要点：
@@ -115,6 +113,8 @@ LIMIT 0,10;
 + 关键词大写
 + 库名、表名、字段名需要右 “`” 符号包裹（大键盘数字1前的符号）
 + 独立子句要求缩进
+
+
 
 
 HTML / CSS部分
