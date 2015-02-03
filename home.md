@@ -37,7 +37,8 @@ PHP
 * 缩进：所有代码缩进约定为**4个空格**，不可使用TAB键替换。
 
 * 大括号：左括号和右括号要求在编辑器内处于同一列，且在关键词下一行。该条件应用于所有if / else if / else / for / foreach / switch / do / while / try 等语句。
-	<pre><code>if ($i > 1)
+	```php
+	if ($i > 1)
 	{
 	    // ..statement..
 	}
@@ -45,7 +46,7 @@ PHP
 	{
 	    // ..other statement..
 	}
-	</code></pre>
+	```
 
 * 运算符、小括号、空格、关键词和函数：
 	1. 不同优先级运算符运算，不论是否需加括号，都应该补全括号表明运算顺序。
@@ -56,41 +57,48 @@ PHP
 	6. 函数命名应根据开发框架环境使用对应的命名方式，**函数名后无空格**。
 	7. 代码区域应规划合理，**任何超过15行的段落都应对应的断行并添加注释内容**。
 
-	<pre><code>$a = (($c / 10 * 12) + ($a * 11) + $b);
+	```php
+	$a = (($c / 10 * 12) + ($a * 11) + $b);
 	$b = 0;
     for ($i = 0; $i &lt;= $a; $i ++)
     {
         $b += $i;
     }
-    </code></pre>
+    ```
 
 * 引号：所有单纯的文本引用，必需使用单引号。对于文本中存在小于三个的变量拼接，可使用单引号与点符号，也可以使用双引号。大量字符拼接务必使用双引号，并使用花括号如下格式：
 	**严禁**在双引号中不使用花括号直接引用数组或对象的内容。
-	<pre><code>$str = "{$username}，这是{$project['name']}的文档。请阅读并在第{$line -> number}行填写…";
-	</code></pre>
+	```php
+	$str = "{$user}，这是{$project['name']}的文档。阅读并在第{$line->number}行填写…";
+	```
 
 
 ###变量/常量###
 * 变量命名：
 	由**约定俗成的缩写**和**完整词义单词**以及**下划线“_”**组成，如：
-	<pre><code>$pre_column_name, $username, $translation_lang</code></pre>
+	```php
+	$pre_column_name, $username, $translation_lang
+	```
 	如使用临时变量，请在“$”后增加“_”（较大的临时数据请务必在使用结束后使用 unset 注销）如：
-	<pre><code>$_time, $_temp, $_user</code></pre>
+	```php
+	$_time, $_temp, $_user
+	```
 	
 * 所有自定义变量必需经过初始化后才可以使用。
-	<pre><code>$b = array();             // 不可省略此句
+	```php
+	$b = array();             // 不可省略此句
 	foreach ($array as $v)
 	{
 		$b[] = $v;
 	}
-    </code></pre>
-
+	```
 
 * 在变量不可控的情况下，一定要使用 isset() 或 empty() 判断变量是否存在后再运算。特别是如 GET、COOKIE、数据库读取结果等变量时。
 	**禁止出现因此而引起的遍历或赋值报错，此错误大多会影响最终的结果。**
 
 * 数组和多个变量赋值，要求等号的对齐：
-	<pre><code>$username = 'ABC';
+	```php
+	$username = 'ABC';
 	$password = md5('123456');
 	$lang     = 'zh-CN';
 	
@@ -99,10 +107,12 @@ PHP
 		'password'    => $password,
 		'lang'        => $lang,
 	);
-	</code></pre>
+	```
 
 * 常量要求由全大写单词及下划线组成，用于某个范围的常量应协商确定。
-	<pre><code>PRODUCT_TYPE_HOTEL  DISTRICT_TYPE</code></pre>
+	```php
+	PRODUCT_TYPE_HOTEL  DISTRICT_TYPE
+	```
 
 
 
@@ -110,7 +120,8 @@ PHP
 
 简单的查询语句请在一行内完成。如涉及表关联、子表、多条件查询等，一律按照SQL标准格式化语句。
 需要达到的要求是可逐层分析语句结构，如：
-<pre><code>SELECT  o.`order`, o.`time`, o,`status`, o,`uid`, 
+```sql
+SELECT  o.`order`, o.`time`, o,`status`, o,`uid`, 
 		u.`name`, p.`product` 
 FROM `order` AS o
 	LEFT JOIN `user` AS u ON o.`uid` = u.`id` 
@@ -118,7 +129,7 @@ FROM `order` AS o
 WHERE o.`uid` = :uid AND p.`name` LIKE :keyword
 ORDER BY o.`id` DESC
 LIMIT 0,10;
-</code></pre>
+```
 
 **要点：**
 
@@ -133,10 +144,11 @@ LIMIT 0,10;
 
 所有对文件的路径的引用，都应该包含末尾的 "/"，且变量或常量命名应包含词汇path。
 含 dir 的变量，仅表示文件夹名称。如下：
-<pre><code>define('ROOT_PATH', dirname(\__FILE__).'/');
+```php
+define('ROOT_PATH', dirname(__FILE__).'/');
 $log_dir  = 'log';
 $log_path = ROOT_PATH . $log_dir . '/';
-</code></pre>
+```
 
 
 
@@ -144,8 +156,6 @@ $log_path = ROOT_PATH . $log_dir . '/';
 
 不吝啬类与函数的定义，凡是需求基本相同的代码，应整理并总结出函数，定义于对应相应的文件中；多个相关函数应整理并创建类。
 代码重用，并**不应用**于钩子、可能要经常变更、复杂业务逻辑的代码。函数和类应该是**特定功能**或**结果要求单一**的。
-I get 10 times more traffic from [Google] [1] than from
-[Yahoo] [2] or [MSN] [3].
 
 
 
@@ -154,7 +164,8 @@ I get 10 times more traffic from [Google] [1] than from
 注释包括：行注释，块注释，业务注释，文件注释，调试注释：
 **行注释**一般出现在代码后方，用于解释代码。如：算法解释、函数嵌套解释；
 **块注释**则通常用于方法、类的阐述：
-<pre><code>/** 
+```php
+/** 
  * description...
  +-----------------------------------------
  * @access public
@@ -162,27 +173,30 @@ I get 10 times more traffic from [Google] [1] than from
  * @param string $b
  * @return void
  */
-</code></pre>
+```
 
 **业务注释**一般位于代码上方，与行注释相同，但多用于描述下面要进行的业务操作内容；
-<pre><code>// 金额低于订单金额返回错误（业务注释）
+```php
+// 金额低于订单金额返回错误（业务注释）
 if ($price < $order['price']) 
 {
     $this -> error_code = 511;     // 错误代码511 （行注释）
     return false;
 }
-</code></pre>
+```
 
 较长的业务可用“-”或“="补充长度，并用“v”和“^”标记起始。
-<pre><code>// =======v======= 订单操作开始 =======v=======
+```php
+// =======v======= 订单操作开始 =======v=======
 // -------v------ 订单退款 ------v------
     statement..
 // ------^------ 订单退款结束 ------^------
 // =======^======= 订单操作结束 =======^=======
-</code></pre>
+```
 
 **文件注释**包括类注释和文件注释；
-<pre><code>/**
+```php
+/**
  * description...
  +-----------------------------------------
  * @author author..
@@ -190,19 +204,22 @@ if ($price < $order['price'])
  * @package package..
  * @version $Id$
  */
-</code></pre>
+```
 
 **调试注释**允许一直保存在文件中，规则如下：
-<pre><code>/* debug:
+```php
+/* debug:
 statement..
 //*/
-</code></pre>
+```
 注意末行为双注释，该注释的灵活性在于，当首行的“/*”变为“//\*”时，中间的代码便成为可执行状态。
 
 
 
 ###调试/日志###
 未完待续
+
+
 
 
 HTML / CSS部分
