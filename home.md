@@ -7,10 +7,10 @@
 
 目录
 ----------
-[PHP部分](/blob/master/php.md)
+[PHP部分](/php.md)
 
-[HTML部分](/blob/master/html.md)
+[HTML部分](/html.md)
 
-[CSS部分](/blob/master/css.md)
+[CSS部分](/css.md)
 
-[JS部分](/blob/master/js.md)
+[JS部分](/js.md)
