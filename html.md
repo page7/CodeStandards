@@ -62,6 +62,9 @@ HTML所有代码均必须按照层级关系进行缩进，且只能使用**TAB**
 特殊符号请使用标准的文本转义字符，特别是例如 “<”，“>”，“=” 等会影响HTML结构的字符。
 参考：http://www.nolanchou.com/?p=897
 
+常用图标集可免除大量的图片引入，降低服务器请求性能。常用的图标库包括：
+Font Awesome： http://fontawesome.io/icons/
+Glyphicons：http://glyphicons.com/
 
 
 SEO
