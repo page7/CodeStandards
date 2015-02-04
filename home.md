@@ -16,4 +16,4 @@
 
 [CSS部分](/css.md)
 
-[JS部分](/js.md)
+[JS部分](/javascript.md)
