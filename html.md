@@ -39,10 +39,8 @@ HTML
 	<img src='demo.jpg' /> 使用单引号包裹属性的值
 	```
 	关于各种元素所能包含的其他元素类型，主要在于区分**内联元素**及**块元素**。   
-	
-	其次需要特别注意：**section, article, aside** 元素的使用，这几个元素不是样式容器，而是内容中用来帮助构建文档概要的语义部分。
-
-	li 标签内必须被 ul / ol 包裹，dt / dd 必须被 dl 包裹。
+	其次需要特别注意：**section, article, aside** 元素的使用，这几个元素不是样式容器，而是内容中用来帮助构建文档概要的语义部分。  
+	li 标签内必须被 ul / ol 包裹，dt / dd 必须被 dl 包裹。  
 
 + 尽量使用alt及title元素补全描述及不可见内容：
 	```html
@@ -72,12 +70,12 @@ HTML
 
 特殊符号/图标
 --------
-特殊符号请使用标准的文本转义字符，特别是例如 “<”，“>”，“=” 等会影响HTML结构的字符。
+特殊符号请使用标准的文本转义字符，特别是例如 “<”，“>”，“=” 等会影响HTML结构的字符。  
 参考：http://www.nolanchou.com/?p=897
 
-常用图标集可免除大量的图片引入，降低服务器请求性能。常用的图标库包括：
-Font Awesome： http://fontawesome.io/icons/
-Glyphicons：http://glyphicons.com/
+常用图标集可免除大量的图片引入，降低服务器请求性能。常用的图标库包括：  
+Font Awesome： http://fontawesome.io/icons/  
+Glyphicons：http://glyphicons.com/  
 
 
 SEO
@@ -86,10 +84,10 @@ SEO
 
 + TITLE 长度不宜过长，Google 可显示33个汉字，百度可显示30个汉字。
 
-+ KEYWORDS 不超过5个，长度不超过100汉字，且用英文“,”分隔。
++ KEYWORDS 不超过5个，长度不超过100汉字，且用英文“,”分隔。  
 	关键词请参考百度搜索指数等工具。
 
-+ DESCRIPTION 不超过255个字符
++ DESCRIPTION 不超过255个字符  
 
 
 验证
